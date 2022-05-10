@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="4393a8f3-9ea0-475c-8cde-ec5ad0484b2a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/CAPP/._.DS_Store" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/CAPP/._Screenshot 2022-04-27 at 11.33.59 PM.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/CAPP/._Screenshot 2022-04-27 at 11.34.02 PM.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/CAPP/._Screenshot 2022-04-27 at 11.34.14 PM.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/CAPP/._Screenshot 2022-04-27 at 11.34.18 PM.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/CAPP/._Screenshot 2022-04-27 at 11.34.28 PM.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/CAPP/._Screenshot 2022-04-27 at 11.34.35 PM.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/CAPP/._Screenshot 2022-04-27 at 11.34.40 PM.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/CAPP/._Screenshot 2022-04-27 at 11.34.44 PM.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/CAPP/._Screenshot 2022-04-27 at 11.34.49 PM.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/CAPP/._Screenshot 2022-04-27 at 11.34.54 PM.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/CAPP/._Screenshot 2022-04-27 at 11.34.59 PM.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/CAPP/._Screenshot 2022-04-27 at 11.35.01 PM.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/CAPP/._Screenshot 2022-04-27 at 11.35.05 PM.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/CAPP/._Screenshot 2022-04-27 at 11.35.11 PM.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/CAPP/._Screenshot 2022-04-27 at 11.35.15 PM.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/CAPP/._Screenshot 2022-04-27 at 4.06.08 PM.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/Project/._.DS_Store" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/Project/._Screenshot 2022-04-18 at 11.54.34 PM.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/Project/._logo.png" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="28zGRCrOp9CHkcOUuTteS3qgdng" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+  </component>
+  <component name="RunManager">
+    <configuration name="BackendApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="Backend" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.backend.BackendApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4393a8f3-9ea0-475c-8cde-ec5ad0484b2a" name="Default Changelist" comment="" />
+      <created>1652211992018</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1652211992018</updated>
+      <workItem from="1652211994537" duration="524000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
