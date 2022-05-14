@@ -23,17 +23,30 @@ public class UserService {
         return userRepo.findAll();
     }
 
+    private boolean emailExist(String email) {
+        return userRepo.findByEmail(email).isPresent();
+    }
+
     public String save(User newUser) {
         userRepo.save(newUser);
         return "Success";
     }
 
-    public String register(User newUser) {
-        String secret = "{bcrypt}" + encoder.encode(newUser.getPassword());
-        newUser.setPassword(secret);
-        newUser.setRole(rolesService.findByName("ROLE_STUDENT"));
-        newUser.setFullName(newUser.getFname() + newUser.getLname());
-        return save(newUser);
+    public String register(User newUser) throws Exception {
+        try {
+            if (emailExist(newUser.getEmail())) {
+                throw new Exception("Email already exists");
+            }
+
+            String secret = "{bcrypt}" + encoder.encode(newUser.getPassword());
+            newUser.setPassword(secret);
+            newUser.setRole(rolesService.findByName("ROLE_STUDENT"));
+            newUser.setFullName(newUser.getFname() + newUser.getLname());
+            return save(newUser);
+        } catch (Exception exception) {
+            throw new Exception(exception);
+        }
+
     }
 
 }

@@ -37,6 +37,12 @@ public class DatabaseLoader implements CommandLineRunner {
         User HOD = new User(1313, "Hamed", "Abdelhaq", "Hamed abdelahq", "hamed@najah.edu", "123456",headOfDepartmentRole);
         userRepository.save(HOD);
 
+        Role adminRole = new Role("ROLE_ADMIN");
+        roleRepository.save(adminRole);
+        User systemAdmin = new User(0070, "admin", "admin","admin admin", "sami.imran@stu.najah.edu","123123123",adminRole);
+        userRepository.save(systemAdmin);
+
+
         Long numberOfUsers = userRepository.count();
         System.out.println(numberOfUsers + " users have just inserted in the system");
     }
