@@ -32,4 +32,10 @@ public class UserController {
         }
     }
 
+    @GetMapping(value = "/login", produces = "application/json")
+    public String login(@RequestBody String email, @RequestBody String password) {
+        userService.login(email, password);
+        return "";
+    }
+
 }

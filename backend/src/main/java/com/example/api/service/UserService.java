@@ -49,4 +49,12 @@ public class UserService {
 
     }
 
+    public String login(String email, String password) {
+        User user = new User();
+        if(emailExist(email)){
+            user = userRepo.findByEmail(email).get();
+        }
+        return "";
+    }
+
 }
