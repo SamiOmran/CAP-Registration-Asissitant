@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -15,7 +16,7 @@ public class UserService {
 
     UserService(UserRepo userRepo, RoleService rolesService) {
         this.userRepo = userRepo;
-        this.rolesService = rolesService;
+        UserService.rolesService = rolesService;
         encoder = new BCryptPasswordEncoder();
     }
 
@@ -40,7 +41,8 @@ public class UserService {
 
             String secret = "{bcrypt}" + encoder.encode(newUser.getPassword());
             newUser.setPassword(secret);
-            newUser.setRole(rolesService.findByName("ROLE_STUDENT"));
+            newUser.addRole(rolesService.findByName("ROLE_STUDENT"));
+            newUser.setEnabled(true);
             newUser.setFullName(newUser.getFname() + newUser.getLname());
             return save(newUser);
         } catch (Exception exception) {
@@ -49,12 +51,17 @@ public class UserService {
 
     }
 
-    public String login(String email, String password) {
-        User user = new User();
-        if(emailExist(email)){
-            user = userRepo.findByEmail(email).get();
-        }
-        return "";
+    public Optional<User> getUser(long universityNumber, String password) throws Exception {
+       Optional<User> optionalUser = userRepo.findByUniversityNumber(universityNumber);
+       if(optionalUser.isPresent() && optionalUser.get().getPassword().equals(password)) {
+           return optionalUser;
+       }
+       throw new Exception("User not found");
+    }
+
+    public Optional<User> getUserObject(String username) {
+        long universityNumber = Long.parseLong(username);
+        return userRepo.findByUniversityNumber(universityNumber);
     }
 
 }

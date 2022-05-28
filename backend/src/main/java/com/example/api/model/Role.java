@@ -19,7 +19,6 @@ public class Role {
     @NonNull
     private String name;
 
-    @OneToMany(mappedBy = "role")
-    @JsonManagedReference
+    @ManyToMany(mappedBy = "roles")
     private Collection<User> users;
 }
