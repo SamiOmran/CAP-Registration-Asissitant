@@ -1,0 +1,191 @@
+/* Google Font Import - Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Anek+Bangla&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Anek Bangla", sans-serif;
+}
+
+/* ===== Sidebar ===== */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 250px;
+  padding: 13px 10px;
+  background: #3d5a80;
+  z-index: 100;
+}
+.sidebar.close {
+  width: 88px;
+}
+.sidebar.close .logo {
+  height: 4rem;
+  width: 4rem;
+}
+
+/* ===== Reusable code - Here ===== */
+.sidebar li {
+  height: 50px;
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+
+.sidebar .icon {
+  min-width: 60px;
+  border-radius: 6px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+
+.sidebar .text,
+.sidebar .icon {
+  color: white;
+  transition: var(--tran-03);
+}
+
+.sidebar .text {
+  white-space: nowrap;
+  opacity: 1;
+}
+.sidebar.close .text {
+  opacity: 0;
+}
+/* =========================== */
+
+.sidebar header {
+  position: relative;
+}
+
+.logo {
+  height: 7rem;
+  width: 7rem;
+}
+
+.sidebar header .toggle {
+  position: absolute;
+  top: 140%;
+  right: -55px;
+  transform: translateY(-50%) rotate(180deg);
+  height: 4rem;
+  width: 4rem;
+  background-color: #98c1d9;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+  cursor: pointer;
+  transition: var(--tran-05);
+}
+
+.sidebar.close .toggle {
+  transform: translateY(-50%) rotate(0deg);
+}
+
+.sidebar .menu {
+  margin-top: 70px;
+}
+
+.sidebar li a {
+  list-style: none;
+  height: 100%;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: var(--tran-03);
+}
+
+.sidebar li a:hover {
+  background-color: #ee6c4d;
+}
+.sidebar li a:hover .icon,
+.sidebar li a:hover .text {
+  color: white;
+}
+body.dark .sidebar li a:hover .icon,
+body.dark .sidebar li a:hover .text {
+  color: white;
+}
+
+.sidebar .menu-bar {
+  height: calc(70% - 100px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow-y: scroll;
+}
+.menu-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.menu-bar .bottom-content .toggle-switch {
+  position: absolute;
+  right: 0;
+  height: 100%;
+  min-width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+
+  cursor: pointer;
+}
+.toggle-switch .switch {
+  position: relative;
+  height: 22px;
+  width: 40px;
+  border-radius: 25px;
+  background-color: var(--toggle-color);
+  transition: var(--tran-05);
+}
+
+.switch::before {
+  content: "";
+  position: absolute;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  top: 200%;
+  left: 5px;
+  transform: translateY(-50%);
+  background-color: var(--sidebar-color);
+  transition: var(--tran-04);
+}
+
+.home {
+  position: absolute;
+  top: 0;
+  top: 0;
+  left: 250px;
+  height: 100vh;
+  width: calc(100% - 250px);
+  background-color: white;
+  transition: var(--tran-05);
+}
+.home .text {
+  font-size: 30px;
+  font-weight: 500;
+  color: white;
+  padding: 12px 60px;
+}
+
+.sidebar.close ~ .home {
+  left: 78px;
+  height: 100vh;
+  width: calc(100% - 78px);
+}
+body.dark .home .text {
+  color: var(--text-color);
+}
