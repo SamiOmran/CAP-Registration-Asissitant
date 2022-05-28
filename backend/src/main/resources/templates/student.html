@@ -6,7 +6,7 @@
     <title>Student Page</title>
     <meta charset="UTF-8">
     <!-- CSS-->
-    <link rel="stylesheet" href="assets/student-style.css">
+    <link rel="stylesheet" th:href="@{/css/student-style.css}">
 
     <!--Icons -->
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
@@ -18,7 +18,7 @@
         <header>
 
             <center>
-                <img src="assets/imges/logo.png" class="logo" alt="">
+                <img th:src="@{/images/logo.png}" class="logo" alt="">
             </center>
 
             <i class='bx bx-chevron-right toggle'></i>

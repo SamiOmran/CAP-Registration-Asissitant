@@ -7,7 +7,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.security.Principal;
 import java.util.InputMismatchException;
 import java.util.List;
 
@@ -28,29 +27,22 @@ public class UserController {
 
     @GetMapping(value = "/")
     public String HomePage() {
-        return "student";
+        return "index";
     }
+
+    @GetMapping(value = "/mainPage")
+    public String Student(){return "student";}
 
     @GetMapping(value = "/login")
-    public String loginPage() {
-        return "login";
+    public String Login() {
+        return "index";
     }
-
-//    @PostMapping(value = "/login", produces = "text/html")
-//    public String login(@RequestBody long universityNumber,@RequestBody String password, Model model) {
-//        try {
-//           Optional<User> user = userService.getUser(universityNumber, password);
-//           if (user.get().getRole().equals("ROLE_STUDENT")) {
-////               model.addAttribute("student", user.get());
-//               return "student";
-//           } else {
-//               return "";
-//           }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        return "";
+//    @PostMapping(value = "/mainPage")
+//    public String loginPage() {
+//        return "student";
 //    }
+
+
 
     @ResponseBody
     @GetMapping(value = "/allUsers", produces = "application/json")
@@ -61,7 +53,6 @@ public class UserController {
     @ResponseBody
     @PostMapping(value = "/register", produces = "application/json")
     public String registerNewStudent(@Valid @RequestBody User user, BindingResult bindingResult) throws Exception {
-        System.out.println(user);
         if (bindingResult.hasErrors()) {
             throw new InputMismatchException();
         } else {
