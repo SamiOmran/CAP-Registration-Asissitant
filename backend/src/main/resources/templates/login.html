@@ -22,7 +22,7 @@
 					<h1 class="h3">Sign In</h1>
 				</div>
 				<!-- Form -->
-				<form class="px-3" role="form" method="POST" th:action="@{/index}">
+				<form class="px-3" role="form" method="POST" th:action="@{/login}">
 
 					<!-- error message -->
 					<div class="alert alert-danger" th:if="${param.error != null}">
@@ -30,12 +30,10 @@
 					</div>
 					<!-- Input Box -->
 					<div class="signin-input">
-						<span><i style="font-size:1.3rem; color:#EE6C4D;" class="fa fa-id-card-o"></i></span>
 						<input type="number" name="universityNumber" class="form-control" id="universityNumber" placeholder="Enter Your ID" required autofocus>
 					</div>
 
 					<div class="signin-input">
-						<span><i style="font-size:1.3rem; color:#EE6C4D;" class="fa fa-lock"></i></span>
 						<input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
 					</div>
 					<div class="row mb-3">
