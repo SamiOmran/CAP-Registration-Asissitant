@@ -26,7 +26,7 @@ public class UserController {
     public String student(){return "student";}
 
     @GetMapping(value = "/hod")
-    public String headOfDepartment(){return "reset";}
+    public String headOfDepartment() { return "reset"; }
 
     @GetMapping(value = "/login")
     public String login() {
@@ -53,20 +53,36 @@ public class UserController {
         return "/login";
     }
 
+//    @ResponseBody
+//    @GetMapping(value = "/allUsers", produces = "application/json")
+//    public List<User> getAllUsers() {
+//        return userService.findAll();
+//    }
 
-    @ResponseBody
-    @GetMapping(value = "/allUsers", produces = "application/json")
-    public List<User> getAllUsers() {
-        return userService.findAll();
+    @GetMapping(value = "/register")
+    public String getRegistrationPage(Model model) {
+        model.addAttribute("newStudent", new User());
+        return "signup";
     }
 
-    @ResponseBody
-    @PostMapping(value = "/register", produces = "application/json")
+    @GetMapping(value = "/register2/{uniNum}/{password}")
+    public String getRegistrationPage2(Model model, @PathVariable int uniNum, @PathVariable String password) {
+        User newStudent = new User();
+        newStudent.setUniversityNumber(uniNum);
+        newStudent.setPassword(password);
+
+        model.addAttribute("newStudent", newStudent);
+        return "signup2";
+    }
+
+    @PostMapping(value = "/student")
     public String registerNewStudent(@Valid @RequestBody User user, BindingResult bindingResult) throws Exception {
         if (bindingResult.hasErrors()) {
             throw new InputMismatchException();
         } else {
-            return userService.register(user);
+            userService.register(user);
+            return "student";
+
         }
     }
 
