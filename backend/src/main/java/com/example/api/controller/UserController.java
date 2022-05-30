@@ -90,11 +90,25 @@ public class UserController {
         return "HOD/request-details";
     }
 
-    @GetMapping(value = "/personal/info")
+    @GetMapping(value = "/hod/personal/info")
     public String getPersonalInfo(Principal principal, Model model) {
         Optional<User> user = userService.getUserObject(principal.getName());
         model.addAttribute("user", user.get());
         return "HOD/hod-personal-info";
+    }
+
+    @GetMapping(value = "/student/personal/info")
+    public String getPersonalInfo2(Principal principal, Model model) {
+        Optional<User> user = userService.getUserObject(principal.getName());
+        model.addAttribute("user", user.get());
+        return "student/stu-personal-info";
+    }
+
+    @GetMapping(value = "/student/edit/personal/info")
+    public String editPersonalInfo(Principal principal, Model model) {
+        Optional<User> user = userService.getUserObject(principal.getName());
+        model.addAttribute("user", user.get());
+        return "student/stu-edit-personal-info";
     }
 
 }
