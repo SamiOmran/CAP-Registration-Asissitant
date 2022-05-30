@@ -72,6 +72,18 @@ public class User implements UserDetails {
         roles.add(role);
     }
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "users_requests",
+            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "request_id", referencedColumnName = "id")
+    )
+    private Set<Request> requests = new HashSet<>();
+
+    public void addRequest(Request request) {
+        requests.add(request);
+    }
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

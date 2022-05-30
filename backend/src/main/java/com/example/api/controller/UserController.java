@@ -1,5 +1,6 @@
 package com.example.api.controller;
 
+import com.example.api.model.Request;
 import com.example.api.model.Role;
 import com.example.api.model.User;
 import com.example.api.service.UserService;
@@ -22,8 +23,10 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping(value = "/student/mainPage")
-    public String student(){return "student";}
+//    @GetMapping(value = "/student/mainPage")
+//    public String student(){
+//        return "main-page";
+//    }
 
     @GetMapping(value = "/hod")
     public String headOfDepartment(){return "reset";}
@@ -36,23 +39,23 @@ public class UserController {
     @GetMapping(value = "/")
     public String goHomePage(Principal principal, Model model) {
         Optional<User> user = userService.getUserObject(principal.getName());
-        model.addAttribute("user", user);
         Role role;
         if(user.isPresent()){
             role = (user.get().getRoles()).iterator().next();
-        }else {
+        } else {
             return null;
         }
-
-        if(role.getName().equals("ROLE_STUDENT")){
-            return "redirect:/student/mainPage";
+        if(role.getName().equals("ROLE_STUDENT")) {
+            model.addAttribute("user", user.get());
+            model.addAttribute("request", new Request());
+            return "student/main-page";
         }
         if(role.getName().equals("ROLE_HOD")) {
+            model.addAttribute("hod", user.get());
             return "redirect:/hod";
         }
-        return "/login";
+        return "/student/main-page";
     }
-
 
     @ResponseBody
     @GetMapping(value = "/allUsers", produces = "application/json")

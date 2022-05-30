@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <!-- Coding by CodingLab | www.codinglabweb.com -->
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <!-- CSS-->
-    <link rel="stylesheet" href="../assets/student-style.css">
+    <link rel="stylesheet" th:href="@{/css/student-style.css}">
 
     <!--Icons -->
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
@@ -35,7 +35,7 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="stu-personal-info.html">
                     <i class='bx bx-user icon'></i>
                     <span class="text nav-text">Personal Information</span>
                 </a>
@@ -62,48 +62,27 @@
         <div class="container">
             <div class="row welcome-mess">
                 <div class="col">
-                    <h1 class="h2" style="color: #f27f68;">Edit Personal Information</h1>
+                    <h1 class="h2" style="color: #f27f68;">Personal Information</h1>
                 </div>
-
-            </div>
-            <div class="edit-student-info">
-                <div class="row edit-info-row">
-                    <h1 class="h5 student-info__title">Full Name</h1>
-                    <input type="text" style="width: 20rem; margin-left: 1.4rem;" class="form-control" id="fullname">
-                </div>
-                <div class="row edit-info-row">
-                    <h1 class="h5 student-info__title">Student ID</h1>
-                    <input type="text" style="width: 20rem; margin-left: 1.4rem;" class="form-control" id="fullname">
-                </div>
-                <div class="row edit-info-row">
-                    <h1 class="h5 student-info__title">Email</h1>
-                    <input type="text" style="width: 20rem; margin-left: 1.4rem;" class="form-control" id="fullname">
-                </div>
-                <div class="row edit-info-row">
-                    <h1 class="h5 student-info__title">New Password</h1>
-                    <input type="password" class="form-control" style="width: 20rem; margin-left: 1.4rem;"
-                        id="fullname">
-
-                    <div id="passwordHelpBlock" style="margin-left: 1.2rem;" class="form-text">
-                        Your password must be 8-20 characters long, contain letters and numbers, <br>and must not
-                        contain
-                        spaces, special characters, or emoji.
-                    </div>
-
-                </div>
-                <div class="row edit-info-row">
-                    <h1 class="h5 student-info__title">Confirm Password</h1>
-                    <input type="password" style="width: 20rem; margin-left: 1.4rem;" class="form-control"
-                        id="fullname">
-                </div>
-                <div class="row">
-                    <div class="mb-3 send-div">
-                        <a href="stu-personal-info.html">
-                            <button type="submit" class="send-btn">Save</button>
-                        </a>
-                    </div>
+                <div class="col">
+                    <a href="stu-edit-personal-info.html">
+                        <button type="submit" style="float: right;" class="personal-info">Edit</button>
+                    </a>
                 </div>
             </div>
+            <div class="row student-info">
+                <h1 class="h4 student-info__title">Full Name</h1>
+                <p class="stu-info-text">Hala Salah Mohammad Qubaa</p>
+
+                <h1 class="h4 student-info__title">Student ID</h1>
+                <p class="stu-info-text">11821324</p>
+
+
+                <h1 class="h4 student-info__title">Email</h1>
+                <p class="stu-info-text">Hala.salahqu20@gmail.com</p>
+            </div>
+
+        </div>
 
 
 
