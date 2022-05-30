@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- Coding by CodingLab | www.codinglabweb.com -->
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
     <meta charset="UTF-8">
@@ -48,9 +48,11 @@
             </li>
             <hr>
             <li class="">
-                <a href="../index.html">
+                <a th:href="@{../login}">
                     <i class='bx bx-log-out icon'></i>
-                    <span class="text nav-text">Logout</span>
+                <form method="POST" th:action="@{/logout}" sec:authorize="isAuthenticated()">
+                    <button class="text nav-text"><i class='bx bx-log-out icon'></i> Sign Out</button>
+                </form>
                 </a>
             </li>
 
