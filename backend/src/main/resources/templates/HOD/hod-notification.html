@@ -37,7 +37,7 @@
                 </a>
             </li>
             <li>
-                <a th:href="@{/personal/info}">
+                <a th:href="@{/hod/personal/info}">
                     <i class='bx bx-user icon'></i>
                     <span class="text nav-text">Personal Information</span>
                 </a>
@@ -83,14 +83,14 @@
             <div class="row" id="round" th:object="${hod}" th:each="request : ${requests}">
                 <div class="d-flex pt-5 ps-5">
                     <input class="mt-4 me-2" id="check" name="req" type="checkbox">
-                    <a class="notifi-text" href="request-details.html">
+                    <a class="notifi-text" th:href="@{/request/details/{requestId}(requestId = ${request.id})}">
                         <div class="m-1" id="circle1">
-                            <p th:text="${request.getName()}">H</p>
+                            <p th:text="${request.getName().charAt(0)}">H</p>
                         </div>
                     </a>
                     <a class="notifi-text" th:href="@{/request/details/{requestId}(requestId = ${request.id})}">
                         <div class="mt-3">
-                            <p class="fw-bold" style="color: black;" th:text="${request.getStudentUniversityNumber()}"></p>
+                            <p class="fw-bold" style="color: black;" th:text="${request.getName()}"></p>
                             <p id="req-type" th:text="${request.getType()}"></p>
                         </div>
                     </a>

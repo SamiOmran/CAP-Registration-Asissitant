@@ -44,6 +44,11 @@ public class User implements UserDetails {
     @Transient
     private String fullName;
 
+    public String getFullName() {
+        return fname + " " + lname;
+    }
+
+
     @JsonProperty
     @Column(unique = true)
     @NonNull()

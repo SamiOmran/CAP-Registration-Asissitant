@@ -22,7 +22,7 @@
     <nav class="sidebar close">
         <header>
             <center>
-                <img src="../assets/imges/logo.png" class="logo" alt="">
+                <img th:src="@{/images/logo.png}" class="logo" alt="">
             </center>
             <i class='bx bx-chevron-right toggle'></i>
         </header>
@@ -35,13 +35,13 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a th:href="@{/student/personal/info}">
                     <i class='bx bx-user icon'></i>
                     <span class="text nav-text">Personal Information</span>
                 </a>
             </li>
             <li>
-                <a href="main-page.html">
+                <a th:href="@{/}">
                     <i class='bx bx-plus icon'></i>
                     <span class="text nav-text">Add Request</span>
                 </a>

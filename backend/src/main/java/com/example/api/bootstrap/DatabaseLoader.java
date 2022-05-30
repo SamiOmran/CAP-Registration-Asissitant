@@ -29,7 +29,7 @@ public class DatabaseLoader implements CommandLineRunner {
 
         Role studentRole = new Role("ROLE_STUDENT");
         roleRepository.save(studentRole);
-        User STUDENT1 = new User(11828579, "Hala", "Khalili", "Hala@gmail.com", secret, true);
+        User STUDENT1 = new User(11828579, "Jana", "Khalili", "Hala@gmail.com", secret, true);
         STUDENT1.addRole(studentRole);
         userRepository.save(STUDENT1);
 
