@@ -3,7 +3,10 @@ package com.example.api.controller;
 import com.example.api.model.Request;
 import com.example.api.model.Role;
 import com.example.api.model.User;
+import com.example.api.service.RequestService;
 import com.example.api.service.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,10 +21,13 @@ import java.util.Optional;
 @Controller
 public class UserController {
     private final UserService userService;
+    private final RequestService requestService;
 
-    public UserController(UserService userService) {
+    public UserController(UserService userService, RequestService requestService) {
+        this.requestService = requestService;
         this.userService = userService;
     }
+    private final Logger logger = LoggerFactory.getLogger(UserController.class);
 
 //    @GetMapping(value = "/student/mainPage")
 //    public String student(){
@@ -52,7 +58,9 @@ public class UserController {
         }
         if(role.getName().equals("ROLE_HOD")) {
             model.addAttribute("hod", user.get());
-            return "redirect:/hod";
+            model.addAttribute("requests", user.get().getRequests());
+            logger.info(user.get().getRequests().size() + "");
+            return "HOD/hod-notification";
         }
         return "/student/main-page";
     }
@@ -71,6 +79,22 @@ public class UserController {
         } else {
             return userService.register(user);
         }
+    }
+
+    @GetMapping(value = "/request/details/{requestId}")
+    public String getRequestDetails(Model model, Principal principal, @PathVariable Long requestId) {
+        Optional<User> user = userService.getUserObject(principal.getName());
+        model.addAttribute("user", user.get());
+        Request request = requestService.getRequest(requestId);
+        model.addAttribute("request", request);
+        return "HOD/request-details";
+    }
+
+    @GetMapping(value = "/personal/info")
+    public String getPersonalInfo(Principal principal, Model model) {
+        Optional<User> user = userService.getUserObject(principal.getName());
+        model.addAttribute("user", user.get());
+        return "HOD/hod-personal-info";
     }
 
 }

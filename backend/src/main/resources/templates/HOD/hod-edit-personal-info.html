@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <!-- CSS-->
-    <link rel="stylesheet" th:href="@{/css/student-style.css}">
+    <link rel="stylesheet" th:href="@{/css/hod-style.css}">
 
     <!--Icons -->
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
@@ -22,30 +22,25 @@
     <nav class="sidebar close">
         <header>
             <center>
-                <img src="../assets/imges/logo.png" class="logo" alt="">
+                <img th:src="@{/images/logo.png}" class="logo" alt="">
             </center>
             <i class='bx bx-chevron-right toggle'></i>
         </header>
 
         <div class="menu-bar">
             <li>
-                <a href="#">
+                <a href="hod-notification.html">
                     <i class='bx bx-bell icon'></i>
                     <span class="text nav-text">Notifications</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="hod-personal-info.html">
                     <i class='bx bx-user icon'></i>
                     <span class="text nav-text">Personal Information</span>
                 </a>
             </li>
-            <li>
-                <a href="main-page.html">
-                    <i class='bx bx-plus icon'></i>
-                    <span class="text nav-text">Add Request</span>
-                </a>
-            </li>
+
             <hr>
             <li class="">
                 <a th:href="@{../login}">
@@ -70,19 +65,30 @@
             </div>
             <div class="edit-student-info">
                 <div class="row edit-info-row">
-                    <h1 class="h5 student-info__title">Full Name</h1>
+                    <h1 class="h4 hod-info__title ">Full Name</h1>
+                    <div class="col name-input" style="margin-top: 1rem;  margin-left: 0.9rem;
+                    ">
+                        <label for="">First Name</label>
+                        <input type="text" style="width: 20rem;" class="form-control">
+                    </div>
+                    <div class="col name-input" style="margin-top: 1rem;   margin-left: 0.9rem;
+                    ">
+                        <label for="">Middle name</label>
+                        <input type="text" style="width: 20rem; " class=" form-control">
+                    </div>
+                    <div class="col name-input" style="margin-top: 1rem;   margin-left: 0.9rem;
+                    ">
+                        <label for="">Last Name</label>
+                        <input type="text" style="width: 20rem;" class="form-control">
+                    </div>
+                </div>
+
+                <div class="row edit-info-row">
+                    <h1 class="h4 hod-info__title">Email</h1>
                     <input type="text" style="width: 20rem; margin-left: 1.4rem;" class="form-control" id="fullname">
                 </div>
                 <div class="row edit-info-row">
-                    <h1 class="h5 student-info__title">Student ID</h1>
-                    <input type="text" style="width: 20rem; margin-left: 1.4rem;" class="form-control" id="fullname">
-                </div>
-                <div class="row edit-info-row">
-                    <h1 class="h5 student-info__title">Email</h1>
-                    <input type="text" style="width: 20rem; margin-left: 1.4rem;" class="form-control" id="fullname">
-                </div>
-                <div class="row edit-info-row">
-                    <h1 class="h5 student-info__title">New Password</h1>
+                    <h1 class="h4 hod-info__title ">New Password</h1>
                     <input type="password" class="form-control" style="width: 20rem; margin-left: 1.4rem;"
                         id="fullname">
 
@@ -94,13 +100,13 @@
 
                 </div>
                 <div class="row edit-info-row">
-                    <h1 class="h5 student-info__title">Confirm Password</h1>
+                    <h1 class="h4 hod-info__title ">Confirm Password</h1>
                     <input type="password" style="width: 20rem; margin-left: 1.4rem;" class="form-control"
                         id="fullname">
                 </div>
                 <div class="row">
                     <div class="mb-3 send-div">
-                        <a href="stu-personal-info.html">
+                        <a href="hod-personal-info.html">
                             <button type="submit" class="send-btn">Save</button>
                         </a>
                     </div>

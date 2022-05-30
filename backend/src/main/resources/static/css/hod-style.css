@@ -1,0 +1,384 @@
+/* Google Font Import - Poppins */
+
+@import url("https://fonts.googleapis.com/css2?family=Anek+Bangla&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Anek Bangla", sans-serif;
+}
+
+/* ===== Sidebar ===== */
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 250px;
+  padding: 13px 10px;
+  background: #3d5a80;
+  z-index: 100;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.sidebar.close {
+  width: 88px;
+}
+
+.sidebar.close .logo {
+  height: 4rem;
+  width: 4rem;
+}
+
+/* ===== Reusable code - Here ===== */
+
+.sidebar li {
+  height: 50px;
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+
+.sidebar .icon {
+  min-width: 60px;
+  border-radius: 6px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+
+.sidebar .text,
+.sidebar .icon {
+  color: white;
+  transition: var(--tran-03);
+}
+
+.sidebar .text {
+  white-space: nowrap;
+  opacity: 1;
+}
+
+.sidebar.close .text {
+  opacity: 0;
+}
+
+.student-info {
+  margin-top: 4rem;
+  padding: 2rem 2rem 1rem;
+}
+.student-info__title {
+  margin-left: 0.1rem;
+  color: #ee6c4d;
+}
+.course-info__title {
+  margin-left: 0.1rem;
+  color: #ee6c4d;
+}
+/* =========================== */
+
+.sidebar header {
+  position: relative;
+}
+
+.logo {
+  height: 7rem;
+  width: 7rem;
+}
+
+.sidebar header .toggle {
+  position: absolute;
+  top: 140%;
+  right: -55px;
+  transform: translateY(-50%) rotate(180deg);
+  height: 4rem;
+  width: 4rem;
+  background-color: #98c1d9;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 35px;
+  cursor: pointer;
+  transition: var(--tran-05);
+}
+
+.sidebar.close .toggle {
+  transform: translateY(-50%) rotate(0deg);
+}
+
+.sidebar .menu {
+  margin-top: 70px;
+}
+
+.sidebar li a {
+  list-style: none;
+  height: 100%;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: var(--tran-03);
+}
+
+.sidebar li a:hover {
+  background-color: #ee6c4d;
+}
+
+.sidebar li a:hover .icon,
+.sidebar li a:hover .text {
+  color: white;
+}
+
+.menu-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.menu-bar {
+  margin-top: 5rem;
+}
+
+.menu-bar .bottom-content .toggle-switch {
+  position: absolute;
+  right: 0;
+  height: 100%;
+  min-width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.toggle-switch .switch {
+  position: relative;
+  height: 22px;
+  width: 40px;
+  border-radius: 25px;
+  background-color: var(--toggle-color);
+  transition: var(--tran-05);
+}
+
+.switch::before {
+  content: "";
+  position: absolute;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  top: 200%;
+  left: 5px;
+  transform: translateY(-50%);
+  background-color: var(--sidebar-color);
+  transition: var(--tran-04);
+}
+
+/* Body of the page */
+
+.body-page {
+  padding-top: 4rem;
+  padding-right: 6rem;
+  margin-left: 9rem;
+}
+
+.welcome-mess {
+  margin-bottom: 1rem;
+}
+
+/**Student Information and course Section**/
+
+.hod-info {
+  margin-top: 4rem;
+  border-radius: 0.4rem;
+  padding: 2rem 2rem 2rem;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+.edit-student-info {
+  padding: 2rem 2rem 2rem;
+}
+
+.hod-info__title {
+  margin-left: 0.1rem;
+  color: #ee6c4d;
+}
+
+.info-lable {
+  margin-top: 0.7rem;
+  color: #ee6c4d;
+  margin-left: 1rem;
+}
+
+.info-text {
+  color: black;
+  margin-left: 0.2rem;
+}
+.stu-info-text {
+  margin-left: 0.7rem;
+}
+
+.course {
+  padding: 2rem 2rem 2rem 2rem;
+  margin-top: -1rem;
+  margin-left: 8rem;
+}
+
+.input-box {
+  color: #ee6c4d;
+  margin-top: 1rem;
+}
+
+.input-box-chek {
+  color: #ee6c4d;
+  margin-top: 1.7rem;
+}
+
+.form-check-input:checked {
+  background-color: #ee6c4d !important;
+  border-color: #ee6c4d !important;
+}
+
+.send-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.edit-info-row {
+  margin: 1rem 1rem 2rem 1rem;
+}
+/*Start blue Btn*/
+
+.send-btn {
+  padding: 0.375rem 0.75rem;
+  margin-top: 10px;
+  width: 10.2rem;
+  height: 2.7rem;
+  border: none;
+  cursor: pointer;
+  border-radius: 3px;
+  background: #293241;
+  color: white;
+  transition: 0.5s;
+  margin-bottom: 10px;
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px,
+    rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px,
+    rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+}
+.send-btn:hover {
+  background: #53627c;
+}
+.forward {
+  background: #3d5a80;
+}
+.done {
+  background: #293241;
+}
+.done:hover {
+  background: #53627c;
+}
+.forward:hover {
+  background: #6b8ead;
+}
+.reject {
+  background: #880606;
+}
+.reject:hover {
+  background: #aa0202;
+}
+
+.send-btn:hover {
+  transform: translateY(-0.313rem);
+  color: white;
+}
+
+/*End blue Btn*/
+
+/*Start Oring Btn*/
+
+.personal-info {
+  text-decoration: none;
+  padding: 0.375rem 0.75rem;
+  margin-top: 10px;
+  width: 10.2rem;
+  height: 2.7rem;
+  border: none;
+  cursor: pointer;
+  border-radius: 3px;
+  background: #ee6c4d;
+  color: white;
+  transition: 0.5s;
+  margin-bottom: 10px;
+}
+
+.personal-info a {
+  text-decoration: none;
+}
+
+.personal-info:hover {
+  transform: translateY(-0.313rem);
+  background: #f27f68;
+}
+
+/*End Oring Btn*/
+
+/*Notification*/
+#select {
+  margin-left: 80%;
+  font-size: large;
+  color: #577698;
+}
+
+#title {
+  color: #ff6b4d;
+  font-size: x-large;
+}
+
+#round {
+  padding-bottom: 2rem;
+  margin-left: 10px;
+  border-radius: 0.5pc;
+  height: max-content;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+#circle1 {
+  height: 60px;
+  width: 60px;
+  background-color: #d9fcfd;
+  border-radius: 50%;
+}
+.notifi-text {
+  text-decoration: none;
+}
+
+#circle1 > p,
+#circle2 > p {
+  text-align: center;
+  color: #ff6b4d;
+  padding-top: 15px;
+  font-size: x-large;
+  text-decoration: none;
+}
+
+#circle2 {
+  background-color: #8dc2dc;
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+}
+
+#req-type {
+  margin-top: -10%;
+  color: #7494b6;
+}
+
+#check {
+  width: 20px;
+  height: 20px;
+}

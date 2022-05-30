@@ -36,9 +36,11 @@ public class Request {
     @NonNull
     private String reason;
 
-    @Column
-    @NonNull
     private long studentUniversityNumber;
+
+    private String name;
+
+    private String email;
 
     @ManyToMany(mappedBy = "requests")
     private Collection<User> user;
