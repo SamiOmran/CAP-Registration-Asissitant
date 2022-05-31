@@ -35,7 +35,7 @@ public class UserController {
 //    }
 
     @GetMapping(value = "/hod")
-    public String headOfDepartment() { return "reset"; }
+    public String headOfDepartment(){return "reset";}
 
     @GetMapping(value = "/login")
     public String login() {
@@ -65,35 +65,25 @@ public class UserController {
         return "/student/main-page";
     }
 
-//    @ResponseBody
-//    @GetMapping(value = "/allUsers", produces = "application/json")
-//    public List<User> getAllUsers() {
-//        return userService.findAll();
-//    }
-
-    @GetMapping(value = "/register")
-    public String getRegistrationPage(Model model) {
-        model.addAttribute("newStudent", new User());
-        return "signup";
-
-    @GetMapping(value = "/register2/{uniNum}/{password}")
-    public String getRegistrationPage2(Model model, @PathVariable int uniNum, @PathVariable String password) {
-        User newStudent = new User();
-        newStudent.setUniversityNumber(uniNum);
-        newStudent.setPassword(password);
-
-        model.addAttribute("newStudent", newStudent);
-        return "signup2";
+    @ResponseBody
+    @GetMapping(value = "/allUsers", produces = "application/json")
+    public List<User> getAllUsers() {
+        return userService.findAll();
     }
 
-    @PostMapping(value = "/student")
+    @GetMapping(value = "/register")
+    public String getRegistrationPages(Model model) {
+        model.addAttribute("newStudent", new User());
+        return "signup";
+    }
+
+    @ResponseBody
+    @PostMapping(value = "/register", produces = "application/json")
     public String registerNewStudent(@Valid @RequestBody User user, BindingResult bindingResult) throws Exception {
         if (bindingResult.hasErrors()) {
             throw new InputMismatchException();
         } else {
-            userService.register(user);
-            return "student";
-
+            return userService.register(user);
         }
     }
 
@@ -125,14 +115,6 @@ public class UserController {
         Optional<User> user = userService.getUserObject(principal.getName());
         model.addAttribute("user", user.get());
         return "student/stu-edit-personal-info";
-    }
-
-    @GetMapping(value = "/student-notifications")
-    public String getStudentNotifications(Principal principal, Model model) {
-        Optional<User> user = userService.getUserObject(principal.getName());
-        model.addAttribute("student", user.get());
-        model.addAttribute("requests", user.get().getRequests());
-        return "student/student-notification";
     }
 
 }
