@@ -89,6 +89,7 @@ public class User implements UserDetails {
         requests.add(request);
     }
 
+    public void removeRequest(Request request) { requests.remove(request); }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

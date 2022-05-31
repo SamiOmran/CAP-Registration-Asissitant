@@ -111,4 +111,12 @@ public class UserController {
         return "student/stu-edit-personal-info";
     }
 
+    @GetMapping(value = "/student-notifications")
+    public String getStudentNotifications(Principal principal, Model model) {
+        Optional<User> user = userService.getUserObject(principal.getName());
+        model.addAttribute("student", user.get());
+        model.addAttribute("requests", user.get().getRequests());
+        return "student/student-notification";
+    }
+
 }

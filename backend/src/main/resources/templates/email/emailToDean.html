@@ -6,8 +6,11 @@
     <title>Your Message Subject or Title</title>
 </head>
 <body>
-<h1>Springit Welcome</h1>
-<p th:text="|Dear ${user.getFullName()}|">Dear Username</p>
-<p>Welcome to your new favorite site.</p>
+<h1>CAP Registration Assistant</h1>
+<p th:text="|Dear ${dean.getFullName()}|">Dear Username</p>
+<p>I would like you to inform you that the student:</p>
+    <p th:text="${student.getFullName()} + ' Whose registration number is: ' + ${student.getUniversityNumber()} +
+            ' wants to ' + ${request.getType()} + ' this coruse: ' + ${request.getCourseName()} + ', section: ' + ${request.getSectionNumber()}"> Sami, whose registration number is 11820884 wants to .</p>
+<p>So please if you can proceed the request.</p>
 </body>
 </html>
