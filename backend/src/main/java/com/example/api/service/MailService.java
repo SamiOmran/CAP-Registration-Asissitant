@@ -1,6 +1,7 @@
-package com.exalt.reddit.service;
+package com.example.api.service;
 
-import com.exalt.reddit.model.User;
+import com.example.api.model.Request;
+import com.example.api.model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -34,7 +35,7 @@ public class MailService {
         try {
             MimeMessageHelper message = new MimeMessageHelper(mimeMessage, "UTF-8");
             message.setTo(to);
-            message.setFrom("noreply@springit.com");
+            message.setFrom("hamed@najah.edu");
             message.setSubject(subject);
             message.setText(content, isHtml);
             javaMailSender.send(mimeMessage);
@@ -44,26 +45,22 @@ public class MailService {
     }
 
     @Async
-    public void sendEmailFromTemplate(User user, String templateName, String subject) {
+    public void sendEmailFromTemplate(User dean, User student, Request currentRequest, String templateName, String subject) {
         Locale locale = Locale.ENGLISH;
         Context context = new Context(locale);
-        context.setVariable("user", user);
+        context.setVariable("dean", dean);
+        context.setVariable("student", student);
+        context.setVariable("request", currentRequest);
         context.setVariable("baseURL", BASE_URL);
 
         String content = templateEngine.process(templateName, context);
-        sendEmail(user.getEmail(), subject, content, false, true);
+        sendEmail(dean.getEmail(), subject, content, false, true);
     }
 
     @Async
-    public void sendActivationEmail(User user) {
-        logger.debug("Sending activation email to '{}'", user.getEmail());
-        sendEmailFromTemplate(user, "email/activation", "Springit User Activation");
-    }
-
-    @Async
-    public void sendWelcomeEmail(User user) {
-        logger.debug("Sending activation email to '{}'", user.getEmail());
-        sendEmailFromTemplate(user, "email/welcome", "Welcome new Springit User");
+    public void sendRequestEmail(User dean, User student, Request currentRequest) {
+        logger.debug("Sending email to '{}'", dean.getEmail());
+        sendEmailFromTemplate(dean, student, currentRequest, "email/emailToDean", "CAP Registration Assistant");
     }
 
 
