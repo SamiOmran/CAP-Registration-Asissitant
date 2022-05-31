@@ -77,13 +77,23 @@ public class UserController {
         return "signup";
     }
 
-    @ResponseBody
-    @PostMapping(value = "/register", produces = "application/json")
+    @PostMapping(value = "/register2/{uniNum}/{password}")
+    public String getRegistrationPage2(Model model, @PathVariable int uniNum, @PathVariable String password) {
+        User newStudent = new User();
+        newStudent.setUniversityNumber(uniNum);
+        newStudent.setPassword(password);
+
+        model.addAttribute("newStudent", newStudent);
+        return "signup2";
+    }
+
+    @PostMapping(value = "/test", produces = "application/json")
     public String registerNewStudent(@Valid @RequestBody User user, BindingResult bindingResult) throws Exception {
         if (bindingResult.hasErrors()) {
             throw new InputMismatchException();
         } else {
-            return userService.register(user);
+            userService.register(user);
+            return "student/main-page";
         }
     }
 
@@ -117,4 +127,11 @@ public class UserController {
         return "student/stu-edit-personal-info";
     }
 
+    @GetMapping(value = "/student-notifications")
+    public String getStudentNotifications(Principal principal, Model model) {
+        Optional<User> user = userService.getUserObject(principal.getName());
+        model.addAttribute("student", user.get());
+        model.addAttribute("requests", user.get().getRequests());
+        return "student/student-notification";
+    }
 }

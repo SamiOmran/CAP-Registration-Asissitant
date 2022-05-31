@@ -67,17 +67,6 @@ public class DatabaseLoader implements CommandLineRunner {
         systemAdmin.addRole(adminRole);
         userRepository.save(systemAdmin);
 
-        Request sampleRequest = new Request();
-        sampleRequest.setEmail(STUDENT3.getEmail());
-        sampleRequest.setName(STUDENT3.getFullName());
-        sampleRequest.setStudentUniversityNumber(STUDENT3.getUniversityNumber());
-        sampleRequest.setType("Add");
-        sampleRequest.setCourseId("1067232");
-        sampleRequest.setSectionNumber(2);
-        sampleRequest.setReason("Important");
-        requestRepo.save(sampleRequest);
-        HOD.addRequest(sampleRequest);
-
         Long numberOfUsers = userRepository.count();
         System.out.println(numberOfUsers + " users have just inserted in the system");
     }
