@@ -44,6 +44,11 @@ public class User implements UserDetails {
     @Transient
     private String fullName;
 
+    public String getFullName() {
+        return fname + " " + lname;
+    }
+
+
     @JsonProperty
     @Column(unique = true)
     @NonNull()
@@ -72,6 +77,19 @@ public class User implements UserDetails {
         roles.add(role);
     }
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "users_requests",
+            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "request_id", referencedColumnName = "id")
+    )
+    private Set<Request> requests = new HashSet<>();
+
+    public void addRequest(Request request) {
+        requests.add(request);
+    }
+
+    public void removeRequest(Request request) { requests.remove(request); }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

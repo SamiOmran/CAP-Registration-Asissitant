@@ -1,8 +1,12 @@
 package com.example.api.controller;
 
+import com.example.api.model.Request;
 import com.example.api.model.Role;
 import com.example.api.model.User;
+import com.example.api.service.RequestService;
 import com.example.api.service.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,13 +21,18 @@ import java.util.Optional;
 @Controller
 public class UserController {
     private final UserService userService;
+    private final RequestService requestService;
 
-    public UserController(UserService userService) {
+    public UserController(UserService userService, RequestService requestService) {
+        this.requestService = requestService;
         this.userService = userService;
     }
+    private final Logger logger = LoggerFactory.getLogger(UserController.class);
 
-    @GetMapping(value = "/student/mainPage")
-    public String student(){return "student";}
+//    @GetMapping(value = "/student/mainPage")
+//    public String student(){
+//        return "main-page";
+//    }
 
     @GetMapping(value = "/hod")
     public String headOfDepartment() { return "reset"; }
@@ -36,21 +45,24 @@ public class UserController {
     @GetMapping(value = "/")
     public String goHomePage(Principal principal, Model model) {
         Optional<User> user = userService.getUserObject(principal.getName());
-        model.addAttribute("user", user);
         Role role;
         if(user.isPresent()){
             role = (user.get().getRoles()).iterator().next();
-        }else {
+        } else {
             return null;
         }
-
-        if(role.getName().equals("ROLE_STUDENT")){
-            return "redirect:/student/mainPage";
+        if(role.getName().equals("ROLE_STUDENT")) {
+            model.addAttribute("user", user.get());
+            model.addAttribute("request", new Request());
+            return "student/main-page";
         }
         if(role.getName().equals("ROLE_HOD")) {
-            return "redirect:/hod";
+            model.addAttribute("hod", user.get());
+            model.addAttribute("requests", user.get().getRequests());
+            logger.info(user.get().getRequests().size() + "");
+            return "HOD/hod-notification";
         }
-        return "/login";
+        return "/student/main-page";
     }
 
 //    @ResponseBody
@@ -63,7 +75,6 @@ public class UserController {
     public String getRegistrationPage(Model model) {
         model.addAttribute("newStudent", new User());
         return "signup";
-    }
 
     @GetMapping(value = "/register2/{uniNum}/{password}")
     public String getRegistrationPage2(Model model, @PathVariable int uniNum, @PathVariable String password) {
@@ -84,6 +95,44 @@ public class UserController {
             return "student";
 
         }
+    }
+
+    @GetMapping(value = "/request/details/{requestId}")
+    public String getRequestDetails(Model model, Principal principal, @PathVariable Long requestId) {
+        Optional<User> user = userService.getUserObject(principal.getName());
+        model.addAttribute("user", user.get());
+        Request request = requestService.getRequest(requestId);
+        model.addAttribute("request", request);
+        return "HOD/request-details";
+    }
+
+    @GetMapping(value = "/hod/personal/info")
+    public String getPersonalInfo(Principal principal, Model model) {
+        Optional<User> user = userService.getUserObject(principal.getName());
+        model.addAttribute("user", user.get());
+        return "HOD/hod-personal-info";
+    }
+
+    @GetMapping(value = "/student/personal/info")
+    public String getPersonalInfo2(Principal principal, Model model) {
+        Optional<User> user = userService.getUserObject(principal.getName());
+        model.addAttribute("user", user.get());
+        return "student/stu-personal-info";
+    }
+
+    @GetMapping(value = "/student/edit/personal/info")
+    public String editPersonalInfo(Principal principal, Model model) {
+        Optional<User> user = userService.getUserObject(principal.getName());
+        model.addAttribute("user", user.get());
+        return "student/stu-edit-personal-info";
+    }
+
+    @GetMapping(value = "/student-notifications")
+    public String getStudentNotifications(Principal principal, Model model) {
+        Optional<User> user = userService.getUserObject(principal.getName());
+        model.addAttribute("student", user.get());
+        model.addAttribute("requests", user.get().getRequests());
+        return "student/student-notification";
     }
 
 }

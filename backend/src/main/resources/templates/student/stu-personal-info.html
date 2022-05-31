@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <!-- Coding by CodingLab | www.codinglabweb.com -->
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
     <meta charset="UTF-8">
     <!-- CSS-->
-    <link rel="stylesheet" href="../assets/student-style.css">
+    <link rel="stylesheet" th:href="@{/css/student-style.css}">
 
     <!--Icons -->
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
@@ -22,35 +22,37 @@
     <nav class="sidebar close">
         <header>
             <center>
-                <img src="../assets/imges/logo.png" class="logo" alt="">
+                <img th:src="@{/images/logo.png}" class="logo" alt="">
             </center>
             <i class='bx bx-chevron-right toggle'></i>
         </header>
 
         <div class="menu-bar">
             <li>
-                <a href="#">
+                <a th:href="@{/student-notifications}">
                     <i class='bx bx-bell icon'></i>
                     <span class="text nav-text">Notifications</span>
                 </a>
             </li>
             <li>
-                <a href="stu-personal-info.html">
+                <a th:href="@{student/personl/info}">
                     <i class='bx bx-user icon'></i>
                     <span class="text nav-text">Personal Information</span>
                 </a>
             </li>
             <li>
-                <a href="main-page.html">
+                <a th:href="@{/}">
                     <i class='bx bx-plus icon'></i>
                     <span class="text nav-text">Add Request</span>
                 </a>
             </li>
             <hr>
             <li class="">
-                <a href="../index.html">
+                <a th:href="@{../login}">
                     <i class='bx bx-log-out icon'></i>
-                    <span class="text nav-text">Logout</span>
+                    <form method="POST" th:action="@{/logout}" sec:authorize="isAuthenticated()">
+                        <button class="text nav-text"><i class='bx bx-log-out icon'></i> Sign Out</button>
+                    </form>
                 </a>
             </li>
 
@@ -65,21 +67,21 @@
                     <h1 class="h2" style="color: #f27f68;">Personal Information</h1>
                 </div>
                 <div class="col">
-                    <a href="stu-edit-personal-info.html">
+                    <a th:href="@{/student/edit/personal/info}">
                         <button type="submit" style="float: right;" class="personal-info">Edit</button>
                     </a>
                 </div>
             </div>
             <div class="row student-info">
                 <h1 class="h4 student-info__title">Full Name</h1>
-                <p class="stu-info-text">Hala Salah Mohammad Qubaa</p>
+                <p class="stu-info-text" th:text="${user.getFullName()}">Hala Salah Mohammad Qubaa</p>
 
                 <h1 class="h4 student-info__title">Student ID</h1>
-                <p class="stu-info-text">11821324</p>
+                <p class="stu-info-text" th:text="${user.getUniversityNumber()}">11821324</p>
 
 
                 <h1 class="h4 student-info__title">Email</h1>
-                <p class="stu-info-text">Hala.salahqu20@gmail.com</p>
+                <p class="stu-info-text" th:text="${user.getEmail()}">Hala.salahqu20@gmail.com</p>
             </div>
 
         </div>
