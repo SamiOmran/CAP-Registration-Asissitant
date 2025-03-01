@@ -1,4 +1,4 @@
-# CAP-Registration-Asissitant
+# CAP-Registration-Assistant
 
 Wep application for CAP department, to provide better experience during university registration interval.
 
